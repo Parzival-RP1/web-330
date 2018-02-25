@@ -1,4 +1,6 @@
 var header = require('../header.js');
+console.log(header.display("Daniel", "Coleman", "Exercise 1.3"));
+console.log("\n");
 
 /* ============================================ 
 ; Title: Exercise 1.3
