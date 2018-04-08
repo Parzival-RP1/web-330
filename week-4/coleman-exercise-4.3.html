@@ -1,0 +1,65 @@
+<!--
+============================================ 
+; Title: Exercise 4.3
+; Author: Richard Krasso 
+; Date: 03 April 2018
+; Modified By: Daniel Coleman
+; Description: HTTP PUT and DELETE Operations
+=============================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 4.3 - HTTP PUT and DELETE Operations</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h4>HTTP DELETE Request</h4>
+    <button id="delete1">Delete Security User</button>
+
+    <script>
+        $(function() {
+
+            $('#delete1').click(function() {
+                $.ajax({
+                    url: "http://httpbin.org/put",
+                    dataType: "json",
+                    type: "PUT",
+                    data: {
+                        firstName: "Daniel",
+                        lastName: "Coleman"
+                    },
+                    success: function(data, status) {
+                        console.log("First Name: " + data.form.firstName + "\nLast Name: " + data.form.lastName + "\nStatus: " + status);
+                    }
+                })
+            });
+
+            $('#delete1').click(function() {
+                $.ajax({
+                    url: "http://httpbin.org/delete",
+                    dataType: "json",
+                    type: "DELETE",
+                    data: {
+                        username: "DColem",
+                        password: "Anime123",
+                        email: "dekigokoro@gmail.com"
+                    },
+                    success: function(data, status) {
+                        console.log("Username: " + data.form.username + "\nPassword: " + data.form.password + "\nEmail: " + data.form.email + "\nStatus: " + status);
+                    }
+                })
+            });
+        });
+    </script>
+
+</body>
+
+</html>
