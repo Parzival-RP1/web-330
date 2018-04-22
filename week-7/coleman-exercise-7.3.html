@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<!--
+ Title: Exercise 7.3
+ Author: Richard Krasso
+ Date: 4 16 2018
+ Modified By: Daniel Coleman
+ Description: The "foreach" Binding
+-->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Exercise 7.3</title>
+    <!--Stylesheet - Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <!--JavaScript Libraries-->
+    <script src="../knockout-3.4.2.js"></script>
+</head>
+
+<body>
+    <div role="main" class="container">
+        <br/>
+        <br/>
+        <h2>Textbook Table</h2>
+        <table class="table table-info table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: books">
+                <tr>
+                    <td data-bind="text: name"></td>
+                    <td data-bind="text: price"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+    </div>
+    <script>
+        function BookViewModel() {
+            this.books = ko.observableArray([
+                { name: "HTML & CSS", price: "22.50" },
+                { name: "JavaScript Design Patterns", price: "39.99" },
+                { name: "Express in Action", price: "57.50" },
+                { name: "Atomic Design", price: "20.00" }
+            ]);
+        }
+        ko.applyBindings(new BookViewModel());
+    </script>
+</body>
+
+</html>

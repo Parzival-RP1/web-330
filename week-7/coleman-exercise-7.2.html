@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!--
+ Title: Exercise 7.2
+ Author: Richard Krasso
+ Date: 4 19 2018
+ Modified By: Daniel Coleman
+ Description: The "if" Binding
+-->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Exercise 7.2</title>
+    
+    <!--Stylesheet - Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+        
+    <!--JavaScript Libraries-->
+    <script src="../knockout-3.4.2.js"></script>
+</head>
+
+<body>
+    <div role="main" class="container">
+        <br/><br/>
+        <h2>Name Creator</h2>
+        <div class="form-group">
+            <label for="firstName">First Name: </label>
+            <input type="text" data-bind="value: name" class="form-control" id="firstName" />
+        </div>
+        <div data-bind="if: displayName">
+            <div class="form-group">
+                <label for="lastName">Last Name: </label>
+                <input type="text" data-bind="value: lastname" class="form-control" id="lastName" />
+            </div>
+        </div>
+        <br/>
+        <div data-bind="if: lastname">
+            <h2>
+                <span id="bookOutput" class="alert-success" data-bind="text:
+       fullName"></span>
+            </h2>
+        </div>
+        <br/>
+    </div>
+    <script>
+        function PersonViewModel() {
+            this.name = ko.observable("");
+            this.lastname = ko.observable("");
+            this.displayName = ko.pureComputed(function () {
+                return this.name();
+            }, this);
+            this.fullName = ko.pureComputed(function () {
+                return this.name() + " " + this.lastname();
+            }, this);
+        }
+        ko.applyBindings(new PersonViewModel());
+    </script>
+</body>

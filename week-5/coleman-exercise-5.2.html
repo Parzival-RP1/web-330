@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<!--
+ Title: Exercise 5.2
+ Author: Richard Krasso
+ Date: 4 19 2018
+ Modified By: Daniel Coleman
+ Description: The Proxy Pattern
+-->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+    <!--jquery Reference Library-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+    <h2>Proxy Example 1</h2>
+    <button id="btnExample1">Run test</button>
+    <br />
+    <span id="proxyExampleOne"></span>
+    <script>
+        var game = {
+            title: "Final Fantasy 7",
+            genre: "RPG",
+            display: function () {
+                $("#proxyExampleOne").html("");
+                $("#proxyExampleOne").append("<br />Game Title: " + this.title + "<br />" + "Game Genre: "
+                    + this.genre);
+            }
+        };
+    </script>
+</body>
+
+</html>

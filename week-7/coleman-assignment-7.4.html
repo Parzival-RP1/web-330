@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<!--
+ Title: Assignment 7.4
+ Author: Richard Krasso
+ Date: 4 19 2018
+ Modified By: Daniel Coleman
+ Description: Other Bindings
+-->
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Assignment 7.4</title>
+    
+    <!--Stylesheet - Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+        
+    <!--JavaScript Libraries-->
+    <script src="../knockout-3.4.2.js"></script>
+</head>
+
+<body>
+    <div role="main" class="container">
+        <br/>
+        <br/>
+        <h2>The 'foreach' Binding</h2>
+        <table class="table table-info table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: tutorial">
+                <tr>
+                    <td data-bind="text: title"></td>
+                    <td data-bind="text: description"></td>
+                    <td><a data-bind="text: url, attr:{href: url}, style: {color: 'black'}" target="_blank"></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+    </div>
+    <script>
+        function TutorialViewModel() {
+            this.tutorial = ko.observableArray([
+                { url: "https://www.w3schools.com/js/js_variables.asp", title: "JavaScript Variables", description: "JavaScript variables are containers for storing data values." },
+                { url: "https://www.w3schools.com/js/js_strings.asp", title: "JavaScript Strings", description: "JavaScript strings are used for storing and manipulating text." },
+                { url: "https://www.w3schools.com/js/js_objects.asp", title: "JavaScript Objects", description: "JavaScript variables are containers for data values, objects are variables too. But objects can contain many values." },
+                { url: "https://www.w3schools.com/js/js_events.asp", title: "JavaScript Events", description: "HTML events are 'things' that happen to HTML elements. When JavaScript is used in HTML pages, JavaScript can 'react' on these events." },
+                { url: "https://www.w3schools.com/js/js_arrays.asp", title: "JavaScript Arrays", description: "JavaScript arrays are used to store multiple values in a single variable." },
+            ]);
+        }
+        ko.applyBindings(new TutorialViewModel());
+    </script>
+</body>
+
+</html>
